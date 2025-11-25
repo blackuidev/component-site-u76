@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-gray-900 text-gray-300;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+
+  /* Scrollbar styles using tailwind-scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* For horizontal scrollbars */
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-800 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-full hover:bg-gray-500;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+/* Custom components (example) */
+@layer components {
+  .btn-primary {
+    @apply bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-700;
+  }
+  .card {
+    @apply bg-gray-800 rounded-lg shadow-md p-4;
+  }
+}
+
+/* Dark mode (if needed, configure in tailwind.config.js) */
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-gray-900 text-gray-300;
+  }
+  .card {
+    @apply bg-gray-800 shadow-md;
+  }
+}
