@@ -3,50 +3,122 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply scroll-smooth;
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.1 83.2% 9.8%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --ring: 222.1 83.2% 9.8%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.1 83.2% 9.8%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
 
   body {
-    @apply bg-gray-900 text-gray-300;
-    font-family: 'Helvetica Neue', sans-serif;
-  }
-
-  /* Scrollbar styles using tailwind-scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px; /* For horizontal scrollbars */
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-800 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-600 rounded-full hover:bg-gray-500;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    @apply bg-background text-foreground;
   }
 }
 
-/* Custom components (example) */
-@layer components {
-  .btn-primary {
-    @apply bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-700;
-  }
-  .card {
-    @apply bg-gray-800 rounded-lg shadow-md p-4;
-  }
+/* Gradient Backgrounds */
+.bg-gradient-primary {
+  background-image: linear-gradient(to right, #4f46e5, #7c3aed);
 }
 
-/* Dark mode (if needed, configure in tailwind.config.js) */
-@media (prefers-color-scheme: dark) {
-  body {
-    @apply bg-gray-900 text-gray-300;
-  }
-  .card {
-    @apply bg-gray-800 shadow-md;
-  }
+.bg-gradient-secondary {
+  background-image: linear-gradient(to right, #e0e7ff, #c7d2fe);
 }
+
+.bg-gradient-accent {
+  background-image: linear-gradient(to right, #bae6fd, #7dd3fc);
+}
+
+.bg-gradient-card {
+  background-image: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+}
+
+.dark .bg-gradient-card {
+  background-image: linear-gradient(to bottom, #1f2937, #374151);
+}
+
+.bg-gradient-hero {
+    background-image: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #f472b6 100%);
+}
+
+/* Animated Effects */
+.hover-gradient {
+    transition: all 0.3s ease-in-out;
+    background-size: 200% auto;
+}
+
+.hover-gradient:hover {
+    background-position: right center; /* Shift the gradient on hover */
+    color: #fff;
+}
+
+/* Example usage in Tailwind config (extend section): */
+/* theme: { */
+/*   extend: { */
+/*     backgroundImage: { */
+/*       'gradient-primary': 'linear-gradient(to right, #4f46e5, #7c3aed)', */
+/*     }, */
+/*   }, */
+/* }, */
