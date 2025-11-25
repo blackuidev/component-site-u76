@@ -1,53 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Header = () => {
   return (
-    <header className="bg-gradient-to-br from-gray-900 to-black text-white py-4">
-      <div className="container mx-auto flex items-center justify-between px-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-2xl font-bold"
-        >
-          {/* Replace with your logo component or image */}
-          <Link to="/" className="hover:text-primary transition-colors duration-300">My Portfolio</Link>
-        </motion.div>
+    <header className="bg-gray-900 text-white py-4 shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="text-xl font-bold hover:text-gray-300 transition-colors duration-200">
+          BlackUI
+        </Link>
 
-        <nav>
-          <ul className="flex space-x-6">
-            <li>
-              <MotionLink to="/" label="Home" />
-            </li>
-            <li>
-              <MotionLink to="/projects" label="Projects" />
-            </li>
-            <li>
-              <MotionLink to="/about" label="About" />
-            </li>
-            <li>
-              <MotionLink to="/contact" label="Contact" />
-            </li>
-          </ul>
+        {/* Navigation Links */}
+        <nav className="hidden md:flex space-x-6">
+          <Link to="/" className="hover:text-gray-300 transition-colors duration-200">Home</Link>
+          <Link to="/components" className="hover:text-gray-300 transition-colors duration-200">Components</Link>
+          <Link to="/docs" className="hover:text-gray-300 transition-colors duration-200">Docs</Link>
+          <Link to="/about" className="hover:text-gray-300 transition-colors duration-200">About</Link>
         </nav>
+
+        {/* Actions */}
+        <div className="space-x-4">
+          <Button variant="outline" className="bg-transparent hover:bg-gray-700 text-white border-gray-500 hover:border-gray-300 transition-colors duration-200">
+            Login
+          </Button>
+          <Button className="bg-white text-gray-900 hover:bg-gray-200 transition-colors duration-200">
+            Sign Up
+          </Button>
+        </div>
+
+        {/* Mobile Menu (Example - needs actual implementation) */}
+        <div className="md:hidden">
+          <button className="text-white hover:text-gray-300 focus:outline-none">
+            {/* Hamburger Icon - Replace with lucide-react icon if desired */}
+            <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path fillRule="evenodd" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-const MotionLink = ({ to, label }: { to: string; label: string }) => {
-  return (
-    <motion.li
-      whileHover={{ scale: 1.1 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-    >
-      <Link to={to} className="hover:text-primary transition-colors duration-300">
-        {label}
-      </Link>
-    </motion.li>
-  )
-}
-
-export default Header
+export default Header;
